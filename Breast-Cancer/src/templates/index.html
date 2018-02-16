@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+
+}
+</style>
+<<body onload='document.form1.A1.focus()'>
+  <!-- Contact Section -->
+  <div class="w3-row" id="contact">
+  <div class="w3-half w3-teal w3-container">
+    <h1>Breast Cancer Detection AI</h1><br>
+
+    <form name = "form1" id = "myForm" onsubmit="return CheckDecimal()" action ="{{ url_for('form_submit') }}" method = "post" >
+				<input type="text" class = "w3-input w3-padding-16" placeholder="Perimeter_mean" name="A1" value="{{request.form.A1}}" required><br>
+				<input type="text" class = "w3-input w3-padding-16" placeholder="Area_mean" name="A2" value="{{request.form.A2}}" required><br>
+                <input type="text" class = "w3-input w3-padding-16" placeholder="Concavity_mean" name="A3" value="{{request.form.A3}}" required><br>
+                <input type="text" class = "w3-input w3-padding-16" placeholder="Concave_points_mean" name="A4" value="{{request.form.A4}}" required><br>
+                <input type="text" class = "w3-input w3-padding-16" placeholder="Radius_worst" name="A5" value="{{request.form.A5}}" required><br>
+                <input type="text" class = "w3-input w3-padding-16" placeholder="Texture_worst" name="A6" value="{{request.form.A6}}" required><br>
+				<input type="text" class = "w3-input w3-padding-16" placeholder="Perimeter_worst" name="A7" value="{{request.form.A7}}" required><br>
+				<input type="text" class = "w3-input w3-padding-16" placeholder="Area_worst" name="A8" value="{{request.form.A8}}" required><br>
+		        <input type="text" class = "w3-input w3-padding-16" placeholder="Concave_points_worst" name="A9" value="{{request.form.A9}}" required><br>
+		        <input type="text" class = "w3-input w3-padding-16" placeholder="Symmetry_worst" name="A10" value="{{request.form.A10}}" required><br>
+
+                <input class="w3-button w3-light-grey w3-section" type="submit" value="Submit">
+                <!--<input class="w3-button w3-light-grey w3-section" type="button" value="Reset" onclick = clearForm()>-->
+
+			</form>
+  </div>
+  <div class="w3-half w3-dark-grey w3-container w3-center" style="height:936.28px">
+  <div class="w3-padding-64">
+  {% if result %}
+	  <h1>{{get_flashed_messages()[0]}}</h1>
+	  <h1><strong>{{ result }}</strong></h1>
+			{% endif %}
+			<br>
+			{% if result1 %}
+	  <h1>{{get_flashed_messages()[1]}}</h1>
+	  <h1><strong>{{ result1 }}</strong></h1>
+			{% endif %}
+			<br>
+			{% if result1 %}
+	  <h1>{{get_flashed_messages()[2]}}</h1>
+	  <h1><strong>{{ result2 }}</strong></h1>
+			{% endif %}
+  </div>
+  </div>
+  </div>
+        <script src="{{url_for('static', filename='check-decimal.js')}}"></script>
+        <script src="{{ url_for('static', filename='clear-form.js') }} "></script>
+	</body>
+
+
+</body>
+</html>
